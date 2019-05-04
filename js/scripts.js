@@ -37,7 +37,7 @@ $(document).ready(function () {
                 $('#alertText').text("Task created successfully!");
                 $("#alertWarnTask").show();
 
-                delBtn = cancelBtn.text('Delete');
+                delBtn = currentDoneBtn.next().text('Delete');
                 currentDoneBtn.after(editBtn);
 
                 $(".close").click(function () {
