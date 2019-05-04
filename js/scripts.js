@@ -1,10 +1,14 @@
 $(document).ready(function () {
     var newItem;
     var doneBtn;
+    var editBtn;
+
     setTimeout(function () { //This is just to demonstrate the loader working; Needs to be removed after migration
         $("#newtaskbtn").click(function () {
             addListItem();
             $("tbody").append(newItem);
+
+            editBtn = `<button type="button" class="btn btn-info" style="margin-right:1rem;">Edit</button>`
 
             doneBtn = $("button:contains('Done')");
             doneBtn.click(function (e) {
@@ -19,24 +23,32 @@ $(document).ready(function () {
                 $(this).closest("tr").remove();
                 updateRows();
             });
+
         });
 
         function enterTask(thisObj) {
-            console.log(thisObj.prop('nodeName') + " This is the element name outside conditionals");
             if ((thisObj.val() != "") && (thisObj.prop('nodeName') == 'TEXTAREA')) { //lol
-                console.log(thisObj.prop('nodeName') + " This is the element name");
+                currentDoneBtn = thisObj.parent().next().children(":first-child");
                 thisObj.replaceWith("<p>" + thisObj.val() + "</p>");
                 console.log("Value of thisObj: " + thisObj.val());
+
                 $('#alertWarnTask').addClass("alert-success");
                 $('#alertWarnTask').removeClass('alert-warning');
                 $('#alertText').text("Task created successfully!");
                 $("#alertWarnTask").show();
+
+                delBtn = cancelBtn.text('Delete');
+                currentDoneBtn.after(editBtn);
+
                 $(".close").click(function () {
                     $("#alertWarnTask").hide();
-                });
+                    $('#alertText').text("You have not entered anything in the input area!");
+                    $('#alertWarnTask').addClass("alert-warning");
+                    $('#alertWarnTask').removeClass('alert-success');
+                });   
             } else if ((thisObj.val() == "") && (thisObj.prop('nodeName') == 'TEXTAREA')) {
                 console.log(thisObj.val() + " This is the element val in else if");
-               $("#alertWarnTask").css("display", "block");
+                $("#alertWarnTask").css("display", "block");
                 $(".close").click(function () {
                     $("#alertWarnTask").hide();
                 });
@@ -65,9 +77,9 @@ $(document).ready(function () {
         }
 
         function updateRows() {
-           $("tbody th").each(function(index, element){ //This is also cycling through the element at the same way
-               $(element).text(index+1);
-           });
+            $("tbody th").each(function (index, element) { //This is also cycling through the element at the same way
+                $(element).text(index + 1);
+            });
         } //Going to take some time learning this but I will get it eventually, the loop
 
         $("#loader").hide();
