@@ -8,7 +8,7 @@ $(document).ready(function () {
             addListItem();
             $("tbody").append(newItem);
 
-            editBtn = `<button type="button" class="btn btn-info" style="margin-right:1rem;">Edit</button>`
+            editBtn = `<button type="button" class="btn btn-info" style="margin-right:1rem;">Edit</button>`;
 
             doneBtn = $("button:contains('Done')");
             doneBtn.click(function (e) {
@@ -16,7 +16,7 @@ $(document).ready(function () {
                 var textArea = $(this).parent().prev().children(":first-child");
                 enterTask(textArea);
             });
-
+               
             cancelBtn = $("button:contains('Cancel')");
             cancelBtn.off("click").click(function () {
                 console.log("Click Cncl");
@@ -26,10 +26,18 @@ $(document).ready(function () {
 
         });
 
+        $("tbody").on('click', $("button:contains('Edit')"), function(){
+            $("button:contains('Edit')").off("click").click(function(){
+                wowza = $(this).parent().prev().children(":first-child").text();
+                $(this).parent().prev().children(":first-child").replaceWith('<textarea class="form-control" rows="2" cols="12">' + wowza + '</textarea>');
+                $(this).hide();
+            });
+        });
+
         function enterTask(thisObj) {
             if ((thisObj.val() != "") && (thisObj.prop('nodeName') == 'TEXTAREA')) { //lol
                 currentDoneBtn = thisObj.parent().next().children(":first-child");
-                thisObj.replaceWith("<p>" + thisObj.val() + "</p>");
+                thisObj.replaceWith("<div class=container><div class=row><div class='col-sm-9'><p class='panel-body'>" + thisObj.val() + "</p></div></div></div>");
                 console.log("Value of thisObj: " + thisObj.val());
 
                 $('#alertWarnTask').addClass("alert-success");
