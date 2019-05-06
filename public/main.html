@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css_anim.css" type="text/css">
+
+    <title>Simple Todo Manager</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./scripts.js"></script>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:aquamarine">
+        <a class="navbar-brand" href="#">Simple Todo</a>
+    </nav>
+
+    <div class="container-fluid">
+        <h1>Purpose:</h1>
+        <p>This website was made by<a href="https://twitter.com/chilltymeTV"> @ChillTymeTV</a> as a To Do Manager.
+            <br>Hope you like it! <br>Make sure to check out my other works here(insert link later)</p>
+    </div>
+
+    <div class="container-fluid text-center" id="loader">
+        <!-- the 'text-center' class centers anything apparently -->
+        <div class="spinner-border"></div> <!-- CSS only loading animation from loading.io/css -->
+    </div>
+
+    <button type="button" id="newtaskbtn" class="waitforload btn btn-primary float-right" style="margin:1rem;">Add New
+        Task</button>
+
+    <div class="waitforload table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col-lg-2">#</th>
+                    <th scope="col-lg-8">Task</th>
+                    <th scope="col-lg-2">Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        <p>This is a paragraph, hahahahahaahahahaha</p>
+
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success" style="margin-right:1rem;">Complete</button>
+                        <button type="button" class="btn btn-light">Edit</button>
+                    </td> 
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class='alert alert-warning alert-dismissable' id=alertWarnTask style='display:none'>
+        <button type='button' class='close'>&times;</button>
+        <span id="alertText">You have not entered anything in the input area!</span></div>
+
+</body>
+
+</html>
