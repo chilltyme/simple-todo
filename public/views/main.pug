@@ -1,0 +1,52 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+  link(rel='stylesheet' href='css/css_anim.css' type='text/css')
+  title Simple Todo Manager
+  script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+  script(type='text/javascript' src='js/scripts.js')
+nav.navbar.navbar-expand-lg.navbar-light(style='background-color:aquamarine')
+  a.navbar-brand(href='#') Simple Todo
+.container-fluid
+  h1 Purpose:
+  p
+    | This website was made by
+    a(href='https://twitter.com/chilltymeTV')  @ChillTymeTV
+    |  as a To Do Manager.
+    br
+    | Hope you like it! 
+    br
+    | Make sure to check out my other works here(insert link later)
+#loader.container-fluid.text-center
+  // the 'text-center' class centers anything apparently
+  .spinner-border
+  // CSS only loading animation from loading.io/css
+button#newtaskbtn.waitforload.btn.btn-primary.float-right(type='button' style='margin:1rem;')
+  | Add New
+  | Task
+.waitforload.table-responsive
+  table.table.table-hover
+    thead
+      tr
+        th(scope='col-lg-2') #
+        th(scope='col-lg-8') Task
+        th(scope='col-lg-2') Status
+    tbody
+      //
+        <tr>
+        <th scope="row">1</th>
+        <td>
+        <p>This is a paragraph, hahahahahaahahahaha</p>
+        </td>
+        <td>
+        <button type="button" class="btn btn-success" style="margin-right:1rem;">Complete</button>
+        <button type="button" class="btn btn-light">Edit</button>
+        </td>
+        </tr>
+#alertWarnTask.alert.alert-warning.alert-dismissable(style='display:none')
+  button.close(type='button') &times;
+  span#alertText You have not entered anything in the input area!
