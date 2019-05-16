@@ -36,6 +36,25 @@ $(document).ready(function () {
 
         function enterTask(thisObj) {
             if ((thisObj.val() != "") && (thisObj.prop('nodeName') == 'TEXTAREA')) { //lol
+                
+                //AJAX 
+                $.ajax({
+                    url: '/',
+                    dataType: 'text',
+                    method: 'post',
+                    contentType: 'application/json',
+                    data: JSON.stringify({taskInput : thisObj.val()}),
+                    success: function(data, textStatus, jQxhr){
+                        console.log("This is data: "+ data + " <--");
+                        console.log("This is textStatus: " + textStatus + " <---");
+                    },
+                    error: function(jQxhr, textStatus, errorThrown){
+                        console.log("This is error: "+ errorThrown + " <---");
+                    }
+
+                });
+
+
                 currentDoneBtn = thisObj.parent().next().children(":first-child");
                 thisObj.replaceWith("<div class=container><div class=row><div class='col-sm-9'><p class='panel-body'>" + thisObj.val() + "</p></div></div></div>");
                 console.log("Value of thisObj: " + thisObj.val());
@@ -99,6 +118,8 @@ $(document).ready(function () {
 
 
 //Add form on button in the list
-//Make it be on mySQL
+
 //Have Google/Social Media sign-in
-//In the future have accounts on the site in built
+//Make it so if HTML is entered in the textarea its parsed as plain text and not as HTML.
+//Possible solution to HTML parsing problem is send data to SV first then have the SV inject it in as a string. 
+//onkeyup="javascript:this.value=this.value.replace(/[<,>]/g,'');" <-- as option in textarea band aid 

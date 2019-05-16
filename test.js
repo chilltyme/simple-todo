@@ -1,6 +1,7 @@
 var fs = require('fs');
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
 app.set('view engine', 'pug');
 app.set('views','./public/views');
 
@@ -8,6 +9,10 @@ app.set('views','./public/views');
 var routes = require('./router.js');
 
 app.use(express.static('public'));
+//app.use(express.json());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/", routes);
 

@@ -8,6 +8,11 @@ router.get("/", function(req, res){
     res.render('main');
 });
 
+router.post("/", function(req, res){
+    console.log("wompwomp: " + req.body.taskInput);
+    res.send("received req");
+})
+
 /*router.get("/", function(req, res){
     res.sendFile(path.join(__dirname, '/public/main.html'));
 });*/ //This is the way to serve a file to a URL
